@@ -1,29 +1,24 @@
 package me.gabreuw.amigoscode.springbootcourse.controller;
 
+import lombok.RequiredArgsConstructor;
 import me.gabreuw.amigoscode.springbootcourse.domain.Student;
+import me.gabreuw.amigoscode.springbootcourse.service.StudentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "student")
+@RequiredArgsConstructor
 public class StudentController {
 
+    private StudentService service;
+
     @GetMapping
-    public List<Student> hello() {
-        return List.of(
-                new Student(
-                        1L,
-                        "Mariam",
-                        "marian.jamal@gmail.com",
-                        LocalDate.of(2000, Month.JANUARY, 5),
-                        21
-                )
-        );
+    public List<Student> getStudents() {
+        return service.getStudents();
     }
 
 }
