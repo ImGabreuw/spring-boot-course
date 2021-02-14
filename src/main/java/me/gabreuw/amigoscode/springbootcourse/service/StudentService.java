@@ -1,25 +1,20 @@
 package me.gabreuw.amigoscode.springbootcourse.service;
 
 import me.gabreuw.amigoscode.springbootcourse.domain.Student;
+import me.gabreuw.amigoscode.springbootcourse.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @Service
 public class StudentService {
 
-    public List<Student> getStudents() {
-        return List.of(
-                new Student(
-                        1L,
-                        "Mariam",
-                        "marian.jamal@gmail.com",
-                        LocalDate.of(2000, Month.JANUARY, 5),
-                        21
-                )
-        );
+    @Autowired
+    private StudentRepository repository;
+
+    public List<Student> findAll() {
+        return repository.findAll();
     }
 
 }
