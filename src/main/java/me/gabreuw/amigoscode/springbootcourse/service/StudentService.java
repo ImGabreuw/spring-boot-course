@@ -1,11 +1,13 @@
 package me.gabreuw.amigoscode.springbootcourse.service;
 
 import me.gabreuw.amigoscode.springbootcourse.domain.Student;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
+@Service
 public class StudentService {
 
     public List<Student> getStudents() {
