@@ -18,6 +18,14 @@ public class StudentService {
     }
 
     public void insert(Student student) {
-        System.out.println(student);
+        boolean isInvalidEmail = repository
+                .findStudentByEmail(student.getEmail())
+                .isPresent();
+
+        if (isInvalidEmail) {
+            throw new IllegalArgumentException("Email taken.");
+        }
+
+        repository.save(student);
     }
 }
