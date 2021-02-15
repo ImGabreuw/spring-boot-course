@@ -3,9 +3,7 @@ package me.gabreuw.amigoscode.springbootcourse.controller;
 import me.gabreuw.amigoscode.springbootcourse.domain.Student;
 import me.gabreuw.amigoscode.springbootcourse.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +17,11 @@ public class StudentController {
     @GetMapping
     public List<Student> findAll() {
         return service.findAll();
+    }
+
+    @PostMapping
+    public void registerNewStudent(@RequestBody Student student) {
+        service.insert(student);
     }
 
 }

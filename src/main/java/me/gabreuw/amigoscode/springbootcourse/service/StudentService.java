@@ -17,4 +17,7 @@ public class StudentService {
         return repository.findAll();
     }
 
+    public void insert(Student student) {
+        System.out.println(student);
+    }
 }
