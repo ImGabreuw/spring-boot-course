@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -32,9 +33,16 @@ public class Student implements Serializable {
     private String name;
     private String email;
     private LocalDate dob;
+    @Transient
     private Integer age;
 
-    public Student(String name, String email, LocalDate dob, Integer age) {
-        this(null, name, email, dob, age);
+    public Student(String name, String email, LocalDate dob) {
+        this(null, name, email, dob, null);
+    }
+
+    public Integer getAge() {
+        return Period
+                .between(this.dob, LocalDate.now())
+                .getYears();
     }
 }
