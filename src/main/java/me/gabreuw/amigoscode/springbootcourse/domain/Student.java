@@ -34,4 +34,7 @@ public class Student implements Serializable {
     private LocalDate dob;
     private Integer age;
 
+    public Student(String name, String email, LocalDate dob, Integer age) {
+        this(null, name, email, dob, age);
+    }
 }
