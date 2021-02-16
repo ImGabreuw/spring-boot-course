@@ -28,4 +28,12 @@ public class StudentService {
 
         repository.save(student);
     }
+
+    public void delete(Long studentId) {
+        Student student = repository
+                .findById(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("Student with id " + studentId + " does not exists"));
+
+        repository.delete(student);
+    }
 }
